@@ -1,11 +1,6 @@
 function TextRenderer(locationMap, projectMap) {
-  this.locationMap = locationMap || function(value) {
-    return value.name;
-  }
-
-  this.projectMap = projectMap || function(value) {
-    return value.name;
-  }
+  this.locationMap = locationMap || new MapFactory({});
+  this.projectMap = projectMap || new MapFactory({});
   this.result = {
     "going-on-vacation": [],
     "returning-from-vacation": [],

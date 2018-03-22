@@ -7,6 +7,9 @@ TimelinesParser.prototype.parse = function(projectData) {
     var location = new Location(record.project.location);
     var currentProject = new Project(record.project);
     $.each(record.slots, function(index, slot) {
+      if (!slot.person) {
+        return; //no tests for this.
+      }
       var person = new Person(slot.person);
       var week1 = new Week(slot.weeks[0]);
       var week2 = new Week(slot.weeks[1]);
