@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
   if (request.ansel_snapshot) {
-    var url = "data:text/html," + encodeURIComponent(request.ansel_snapshot);
+    var url = request.ansel_snapshot.content_type + encodeURIComponent(request.ansel_snapshot.content_body);
     chrome.tabs.create({url: url});
   }
 });

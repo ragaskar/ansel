@@ -30,6 +30,10 @@ HtmlRenderer.prototype.addRecord = function(record) {
   }[record.type()](record, this.locationMap, this.projectMap))
 }
 
+HtmlRenderer.prototype.content_type = function() {
+  return "data:text/html,";
+}
+
 HtmlRenderer.prototype.render = function() {
   var sections = [];
   if (this.result["rotation"].length > 0) {

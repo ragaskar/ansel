@@ -57,7 +57,8 @@ Ansel.prototype.snapshot = function(data) {
   var renderer = new this.renderer(this.locationMap, this.projectMap);
   var timelinesParser = new TimelinesParser();
   var deltaRecords = timelinesParser.parse(data)
-  return deltaRecords.render(renderer);
+  var result = {content_type: "data:text/html,", content_body: deltaRecords.render(renderer)}
+  return result;
 }
 
 Ansel.prototype.getRenderer = function(renderer_string) {

@@ -41,6 +41,10 @@ AdminRenderer.prototype.render = function() {
   return sections.join("<br /><br />");
 }
 
+AdminRenderer.prototype.content_type = function() {
+  return "data:text/html,";
+}
+
 function AdminProjectDeltas(project) {
   this.project = project;
   this.leaving = [];

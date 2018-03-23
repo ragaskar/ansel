@@ -43,4 +43,7 @@ TextRenderer.prototype.render = function() {
   return sections.join("\n\n");
 }
 
+TextRenderer.prototype.content_type = function() {
+  return "data:text/html,";
+}
 
