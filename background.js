@@ -1,11 +1,12 @@
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+  if (request.ansel_snapshot) {
+    var url = "data:text/html," + encodeURIComponent(request.ansel_snapshot);
+    chrome.tabs.create({url: url});
+  }
+});
+
 chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-    if (request.ansel_snapshot) {
-      var url = "data:text/html," + encodeURIComponent(request.ansel_snapshot);
-      chrome.tabs.create({url: url});
-    }
-  });
   var boot = function() {
     chrome.tabs.executeScript(null, {
       file: 'boot.js'
