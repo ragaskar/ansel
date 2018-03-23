@@ -16,7 +16,7 @@ describe("AdminRenderer", function() {
        var timelinesParser = new TimelinesParser();
        var deltaRecords = timelinesParser.parse(response.data)
        var result = deltaRecords.render(renderer);
-       expect(result).toEqual("<strong>Quiksilver Pro France</strong><br /><i>Leaving</i><br />Ichizo Umehara<br />Erika Ito<br />Kyle Gearhart<br /><br /><strong>Margaret River Pro</strong><br /><i>Joining</i><br />Ichizo Umehara");
+       expect(result).toEqual("\"Date\", \"Name\", \"From\", \"To\"\r\n,\"Ichizo Umehara\",Quiksilver Pro France,Margaret River Pro\r\n,\"Erika Ito\",Quiksilver Pro France,\r\n,\"Kyle Gearhart\",Quiksilver Pro France,");
     });
   });
 

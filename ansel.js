@@ -1,7 +1,7 @@
 function AdminRenderer(locationMap, projectMap) {
   this.locationMap = locationMap || new MapFactory({});
   this.projectMap = projectMap || new MapFactory({});
-  this.result = {}
+  this.records = [];
 
 }
 
@@ -10,42 +10,30 @@ AdminRenderer.prototype.addRecord = function(record) {
   if (record.type() != "rotation") {
     return;
   }
-  if (record.leavingProject.id) {
-    this.result[record.leavingProject.id] = this.result[record.leavingProject.id] || new AdminProjectDeltas(record.leavingProject);
-    this.result[record.leavingProject.id].leaving.push(record);
-  }
-  if (record.joiningProject.id) {
-    this.result[record.joiningProject.id] = this.result[record.joiningProject.id] || new AdminProjectDeltas(record.joiningProject);
-    this.result[record.joiningProject.id].joining.push(record);
-  }
+  this.records.push(record);
 }
 
 AdminRenderer.prototype.render = function() {
-  var sections = [];
-  $.each(this.result, function(k, project_delta) {
-    var projectSection = ["<strong>" + project_delta.project.name + "</strong>"];
-    if (project_delta.leaving.length > 0) {
-      projectSection.push("<i>Leaving</i>");
-      $.each(project_delta.leaving, function(index, record) {
-        projectSection.push(record.person.name);
-      });
-    }
-    if (project_delta.joining.length > 0) {
-      projectSection.push("<i>Joining</i>");
-      $.each(project_delta.joining, function(index, record) {
-        projectSection.push(record.person.name);
-      });
-    }
-    sections.push(projectSection.join("<br />"));
-  })
-  return sections.join("<br /><br />");
+  var sections = ['"Date", "Name", "From", "To"'];
+  $.each(this.records, function(k, record) {
+    var  cols = [];
+    cols.push(""); //we'll get the date later.
+    cols.push('\"' + this.escapeCommas(record.person.name) + "\"");
+    cols.push(this.escapeCommas(record.leavingProject.name || ""));
+    cols.push(this.escapeCommas(record.joiningProject.name || ""));
+    sections.push(cols.join(","));
+  }.bind(this));
+  return sections.join("\r\n");
 }
 
-function AdminProjectDeltas(project) {
-  this.project = project;
-  this.leaving = [];
-  this.joining = [];
+AdminRenderer.prototype.escapeCommas = function(string) {
+  return string.replace(',', '\\,')
 }
+
+AdminRenderer.prototype.content_type = function() {
+  return "data:text/csv;charset=utf-8,";
+}
+
 
 var Ansel = function(renderer, locationMap, projectMap) {
   this.renderer = this.getRenderer(renderer)
@@ -57,7 +45,7 @@ Ansel.prototype.snapshot = function(data) {
   var renderer = new this.renderer(this.locationMap, this.projectMap);
   var timelinesParser = new TimelinesParser();
   var deltaRecords = timelinesParser.parse(data)
-  var result = {content_type: "data:text/html,", content_body: deltaRecords.render(renderer)}
+  var result = {content_type: renderer.content_type(), content_body: deltaRecords.render(renderer)}
   return result;
 }
 
@@ -202,6 +190,10 @@ HtmlRenderer.prototype.addRecord = function(record) {
   }[record.type()](record, this.locationMap, this.projectMap))
 }
 
+HtmlRenderer.prototype.content_type = function() {
+  return "data:text/html,";
+}
+
 HtmlRenderer.prototype.render = function() {
   var sections = [];
   if (this.result["rotation"].length > 0) {
@@ -319,6 +311,9 @@ TextRenderer.prototype.render = function() {
   return sections.join("\n\n");
 }
 
+TextRenderer.prototype.content_type = function() {
+  return "data:text/html,";
+}
 
 function TimelinesParser() {
 }
