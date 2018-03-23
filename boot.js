@@ -34,7 +34,6 @@ var getter = new PageGetter("/api/timelines", {
   location_ids: locationIds.join(','),
 },
 function(records) {
-  console.log(records);
   var locationMap = {
     "Tokyo": "NRT",
     "New York": "NYC",
@@ -67,9 +66,13 @@ function(records) {
     "CF - SF - CLI": "CLI"
   };
 
-  var ansel = new Ansel(locationMap, projectMap);
-  var result = ansel.snapshot(records);
-  chrome.runtime.sendMessage({ansel_snapshot: result})
+  chrome.storage.sync.get({
+    ansel_formatter: 'html',
+  }, function(items) {
+    var ansel = new Ansel(items.ansel_formatter, locationMap, projectMap);
+    var result = ansel.snapshot(records);
+    chrome.runtime.sendMessage({ansel_snapshot: result})
+  });
 });
 
 getter.run();
