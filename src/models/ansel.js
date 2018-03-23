@@ -14,6 +14,7 @@ Ansel.prototype.snapshot = function(data) {
 Ansel.prototype.getRenderer = function(renderer_string) {
   return {
     "html": HtmlRenderer,
-    "text": TextRenderer
+    "text": TextRenderer,
+    "admin": AdminRenderer
   }[renderer_string] || HtmlRenderer;
 }
