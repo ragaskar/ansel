@@ -117,7 +117,7 @@ DeltaRecords.prototype.leavingProject = function(person, project, location) {
 }
 
 DeltaRecords.prototype.joiningProject = function(person, project, location) {
-  if (this.records[person.id]) {
+  if (this.records[person.id] && this.records[person.id].addJoiningProject) {
     this.records[person.id].addJoiningProject(project)
   } else {
     this.records[person.id] = new RotationDelta({
