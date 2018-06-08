@@ -41,7 +41,9 @@ function(records) {
     "San Francisco": "SF",
     "Toronto": "TOR",
     "Palo Alto": "PA",
-    "Dublin": "DUB"
+    "Dublin": "DUB",
+    "Colorado": "DEN",
+    "Santa Monica": "LA"
   };
 
   var projectMap = {
@@ -63,7 +65,34 @@ function(records) {
     "CF - SF - AppsManager": "AppsManager",
     "CF - Security Triage (Davos)": "Davos",
     "CF - SF - Routing": "Routing",
-    "CF - SF - CLI": "CLI"
+    "CF - SF - CLI": "CLI",
+    "CF - SF - Cloud Ops PWS": "CloudOps",
+    "CF - TOR - App CI/CD - Deploy DevOps Tools (Draupnir)": "Draupnir",
+    "CF - TOR - App CI/CD - Concourse OSS": "Concourse",
+    "CF - NYC - PCF Dev": "PCFDev",
+    "CF - SF - Diego": "Diego",
+    "CF - SF - CAPI": "CAPI",
+    "CF - Elafros": "Elafros",
+    "CF - LA - Networking": "Networking",
+    "CF - DEN - Platform Monitoring (Healthwatch)": "Healthwatch",
+    "CF - DEN - Event Producer": "Event Producer",
+    "CF - DEN - EATs": "EATs",
+    "CF - LDN - Redis Tile": "Redis",
+    "CF - DEN - Norm": "Norm",
+    "CF - DEN - Loggregator": "Loggregator",
+    "CF - LDN - Disaster Recovery": "Disaster Recovery",
+    "CF - TOR - Master Pipeline": "Master Pipeline",
+    "CF - SF - Toolsmiths": "Toolsmiths",
+    "CF - SF - Mysql Galera": "MySQL Galera",
+    "CF - TOR - AWS Service Broker": "AWS Service Broker",
+    "CF - PA - PKS Release Engineering": "PKS RelEng",
+    "CF - TOR - Push Notification": "Push Notification",
+    "CF - DUB - OD-PKS": "OD-PKS",
+    "CF - SF - Identity Service": "SSO",
+    "CF - NYC - Greenhouse / Garden Windows": "Greenhouse",
+    "CF - LDN - RMQ Tile": "RMQ Tile",
+    "CF - LDN - Garden Core": "Garden",
+    "CF - SF - Ops Manager": "OpsManager"
   };
 
   chrome.storage.sync.get({
