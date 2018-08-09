@@ -92,7 +92,13 @@ function(records) {
     "CF - NYC - Greenhouse / Garden Windows": "Greenhouse",
     "CF - LDN - RMQ Tile": "RMQ Tile",
     "CF - LDN - Garden Core": "Garden",
-    "CF - SF - Ops Manager": "OpsManager"
+    "CF - SF - Ops Manager": "OpsManager",
+    "CF - LA - Release Engineering": "RelEng",
+    "CF - LA - Infrastructure": "Infrastructure",
+    "CF - SF - Identity UAA": "UAA",
+    "CF - SF - BOSH": "BOSH",
+    "CF - TOR - Open Source License Tooling": "OSLT",
+    "CF - SF - Documentation": "Docs"
   };
 
   chrome.storage.sync.get({
