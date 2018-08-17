@@ -63,7 +63,14 @@ function(records) {
     "CF - SF - AppsManager": "AppsManager",
     "CF - Security Triage (Davos)": "Davos",
     "CF - SF - Routing": "Routing",
-    "CF - SF - CLI": "CLI"
+    "CF - SF - CLI": "CLI",
+    "CF - SF - Cloud Ops PWS": "CloudOps",
+    "CF - SF - BOSH": "BOSH",
+    "CF - PA - PAKS": "PAKS",
+    "CF - DUB - OD-PKS": "OD-PKS",
+    "CF - LA - Networking": "Networking",
+    "CF - TOR - FAAS": "FAAS",
+    "CF - DEN - Loggregator": "Loggregator"
   };
 
   chrome.storage.sync.get({

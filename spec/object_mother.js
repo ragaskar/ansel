@@ -2,6 +2,7 @@ function ObjectMother() {
   this.personId = 0;
   this.projectId = 0;
   this.locationId = 0;
+  this.slotId = 0;
 }
 
 ObjectMother.prototype.personName = function() {
@@ -46,12 +47,48 @@ ObjectMother.prototype.random = function(arr) {
   return arr[Math.floor(Math.random()*arr.length)]
 }
 
+ObjectMother.prototype.goingOnVacationSlot = function(attrs) {
+  return new Slot($.extend({
+    start_on: "n/a",
+    finish_on: "n/a",
+    weeks: [this.weekData(), this.vacationWeekData()],
+    role: this.roleData(),
+    id: this.getNextSlotId(),
+    person: this.personData()
+  },
+  attrs || {}))
+}
+
+ObjectMother.prototype.slot = function(attrs) {
+  return new Slot($.extend({
+    start_on: "n/a",
+    finish_on: "n/a",
+    weeks: [this.weekData(), this.weekData()],
+    role: this.roleData(),
+    id: this.getNextSlotId(),
+    person: this.personData()
+  },
+  attrs || {}))
+}
+
 ObjectMother.prototype.person = function(attrs) {
-  return new Person($.extend({
+  return new Person(this.personData(attrs));
+}
+
+ObjectMother.prototype.personData = function(attrs) {
+  return $.extend({
     name: this.personName(),
     id: this.getNextPersonId()
   },
-  attrs || {}))
+  attrs || {});
+}
+
+ObjectMother.prototype.roleData = function(attrs) {
+  var roles = [
+    {id: 1, name: "Engineer"},
+    {id: 2, name: "Designer"}
+  ];
+  return $.extend(rand(roles), attrs || {});
 }
 
 ObjectMother.prototype.project = function(attrs) {
@@ -75,6 +112,11 @@ ObjectMother.prototype.getNextPersonId = function() {
   return this.personId;
 }
 
+ObjectMother.prototype.getNextSlotId = function() {
+  this.slotId++;
+  return this.slotId;
+}
+
 ObjectMother.prototype.getNextProjectId = function() {
   this.projectId++;
   return this.projectId;
@@ -85,9 +127,8 @@ ObjectMother.prototype.getNextLocationId = function() {
   return this.locationId;
 }
 
-ObjectMother.prototype.week = function(attrs) {
-  return new Week(
-    $.extend({
+ObjectMother.prototype.weekData = function(attrs) {
+  return $.extend({
     start_on: "2018-03-05",
     days: [
       {on_project: true, on_vacation: false},
@@ -96,8 +137,11 @@ ObjectMother.prototype.week = function(attrs) {
       {on_project: true, on_vacation: false},
       {on_project: true, on_vacation: false}
     ]},
-    attrs || {})
-  );
+    attrs || {});
+}
+
+ObjectMother.prototype.week = function(attrs) {
+  return new Week(this.weekData(attrs));
 }
 
 ObjectMother.prototype.week_on_project = function(attrs) {
@@ -125,7 +169,11 @@ ObjectMother.prototype.week_off_project = function(attrs) {
 }
 
 ObjectMother.prototype.week_on_vacation = function(attrs) {
-  return this.week($.extend(attrs || {}, {
+  return this.week(this.vacationWeekData(attrs));
+}
+
+ObjectMother.prototype.vacationWeekData = function(attrs) {
+  return $.extend(attrs || {}, {
     days: [
       {on_project: true, on_vacation: true},
       {on_project: true, on_vacation: true},
@@ -133,5 +181,5 @@ ObjectMother.prototype.week_on_vacation = function(attrs) {
       {on_project: true, on_vacation: true},
       {on_project: true, on_vacation: true}
     ]
-  }));
+  });
 }

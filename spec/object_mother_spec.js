@@ -10,11 +10,11 @@ describe("ObjectMother", function() {
       var week = mother.week_on_vacation();
       expect(week.onVacation()).toBe(true);
     });
-    it("week_on_projerct returns true for onProject()", function() {
+    it("week_on_project returns true for onProject()", function() {
       var week = mother.week_on_project();
       expect(week.onProject()).toBe(true);
     });
-    it("week_off_projerct returns true for onProject()", function() {
+    it("week_off_project returns true for onProject()", function() {
       var week = mother.week_off_project();
       expect(week.onProject()).toBe(false);
     });
