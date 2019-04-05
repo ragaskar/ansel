@@ -12,7 +12,7 @@ function TextRenderer(locationMap, projectMap) {
 TextRenderer.prototype.addRecord = function(record) {
   this.result[record.type()].push({
     "going-on-vacation": function(record, locationMap, projectMap) {
-      return "(" + locationMap(record.location) + ") " + record.person.name + " taking a vacation from " + projectMap(record.project);
+      return "(" + locationMap(record.location) + ") " + record.person.name + " taking some time away from " + projectMap(record.project);
     },
     "returning-from-vacation": function(record, locationMap, projectMap) {
       return "(" + locationMap(record.location) + ") " + record.person.name + " returning to " + projectMap(record.project);
@@ -35,10 +35,10 @@ TextRenderer.prototype.render = function() {
     sections.push("Rotations\n\n" + this.result["rotation"].join("\n"));
   }
   if (this.result["going-on-vacation"].length > 0) {
-    sections.push("Going on Vacation\n\n" + this.result["going-on-vacation"].join("\n"));
+    sections.push("Going on Vacation/Leave\n\n" + this.result["going-on-vacation"].join("\n"));
   }
   if (this.result["returning-from-vacation"].length > 0) {
-    sections.push("Returning from Vacation\n\n" + this.result["returning-from-vacation"].join("\n"));
+    sections.push("Returning from Vacation/Leave\n\n" + this.result["returning-from-vacation"].join("\n"));
   }
   return sections.join("\n\n");
 }

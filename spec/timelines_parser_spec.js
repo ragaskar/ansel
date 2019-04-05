@@ -20,9 +20,9 @@ describe("TimelinesParser", function() {
                               "(NRT) Ichizo Umehara rotating from Quiksilver Pro France to Margaret River Pro\n" +
                               "(NRT) Erika Ito rolling off Quiksilver Pro France\n" +
                               "(NRT) Kyle Gearhart rolling off Quiksilver Pro France\n\n" +
-                              "Going on Vacation\n\n" +
-                              "(NRT) Andrew Wright taking a vacation from Quiksilver Pro France\n\n" +
-                              "Returning from Vacation\n\n" +
+                              "Going on Vacation/Leave\n\n" +
+                              "(NRT) Andrew Wright taking some time away from Quiksilver Pro France\n\n" +
+                              "Returning from Vacation/Leave\n\n" +
                               "(NRT) Eugene Fabian returning to Quiksilver Pro France");
     });
   });

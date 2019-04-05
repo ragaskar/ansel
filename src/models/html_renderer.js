@@ -13,7 +13,7 @@ function HtmlRenderer(locationMap, projectMap) {
 HtmlRenderer.prototype.addRecord = function(record) {
   this.result[record.type()].push({
     "going-on-vacation": function(record, locationMap, projectMap) {
-      return "(" + locationMap(record.location) + ") <strong>" + record.person.name + "</strong> taking a vacation from <strong>" + projectMap(record.project) + "</strong>";
+      return "(" + locationMap(record.location) + ") <strong>" + record.person.name + "</strong> taking some time away from <strong>" + projectMap(record.project) + "</strong>";
     },
     "returning-from-vacation": function(record, locationMap, projectMap) {
       return "(" + locationMap(record.location) + ") <strong>" + record.person.name + "</strong> returning to <strong>" + projectMap(record.project) + "</strong>";
