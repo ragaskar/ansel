@@ -98,7 +98,12 @@ function(records) {
     "CF - SF - Identity UAA": "UAA",
     "CF - SF - BOSH": "BOSH",
     "CF - TOR - Open Source License Tooling": "OSLT",
-    "CF - SF - Documentation": "Docs"
+    "CF - SF - Documentation": "Docs",
+    "CF - SF - Permissions": "Perm",
+    "CF - SF - UAA": "UAA",
+    "CF - SF - Onboarding": "Onboarding Week",
+    "CF - SF - Billing and Account Management": "BAM",
+    "CF - DUB - PKS Telemetry": "PKS Telemetry"
   };
 
   chrome.storage.sync.get({
