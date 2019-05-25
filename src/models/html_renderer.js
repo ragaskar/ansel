@@ -40,10 +40,10 @@ HtmlRenderer.prototype.render = function() {
     sections.push("<i>Rotations</i><br />" + this.result["rotation"].join("<br />"));
   }
   if (this.result["going-on-vacation"].length > 0) {
-    sections.push("<i>Going on Vacation</i><br />" + this.result["going-on-vacation"].join("<br />"));
+    sections.push("<i>Going on Vacation/Leave</i><br />" + this.result["going-on-vacation"].join("<br />"));
   }
   if (this.result["returning-from-vacation"].length > 0) {
-    sections.push("<i>Returning from Vacation</i><br />" + this.result["returning-from-vacation"].join("<br />"));
+    sections.push("<i>Returning from Vacation/Leave</i><br />" + this.result["returning-from-vacation"].join("<br />"));
   }
   return sections.join("<br /><br />");
 }
