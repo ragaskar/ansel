@@ -103,7 +103,21 @@ function(records) {
     "CF - SF - UAA": "UAA",
     "CF - SF - Onboarding": "Onboarding Week",
     "CF - SF - Billing and Account Management": "BAM",
-    "CF - DUB - PKS Telemetry": "PKS Telemetry"
+    "CF - DUB - PKS Telemetry": "PKS Telemetry",
+    "CF - BOSH Director": "BOSH Director",
+    "CF - DUB - Navigating Containers (NavCon)": "NavCon",
+    "CF - TOR - Security PCI Compliance": "Security PCI Compliance",
+    "CF - LDN - CF Services API": "CF Services API",
+    "CF - SF - Security Triage (Davos)": "Davos",
+    "CF - DUB - Eirini CFF": "Eirini CFF",
+    "PVD: Pivotal R&D - Cloud 2 - Cloud Foundry (CF)": "PVD",
+    "CF - Networking Program": "Networking Program",
+    "CF - Distributed Security ": "Distributed Security",
+    "CF - NYC - Buildpacks": "Buildpacks",
+    "CF - LDN - Independent Services Marketplace": "Independent Services Marketplace",
+    "CF - DEN - Data Visualization": "Dataviz",
+    "GP - REM - Greenplum Building Blocks": "GBB",
+    "CF - NYC - Build Service": "Build Service"
   };
 
   chrome.storage.sync.get({
